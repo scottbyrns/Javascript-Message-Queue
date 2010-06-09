@@ -1,5 +1,8 @@
 (function (className, namespace) {
-	namespace = namespace || window;
+	if (typeof namespace === 'string' && !window[namespace]) {
+		window[namespace] = {};
+	}
+	namespace = namespace || 'window';
 	var MessageQueue = function () {
 		this.queuePool = {};
 		this.queueCallbacks = {};
@@ -55,5 +58,5 @@
 			this.queuePool[queue] = [];
 		}
 	};
-	[namespace][className] = new MessageQueue();
-})('MessageQueue', 'SB');
+	window[namespace][className] = new MessageQueue();
+})('MessageQueue', 'BYRNS');
