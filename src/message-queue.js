@@ -1,4 +1,5 @@
-(function (className) {
+(function (className, namespace) {
+	namespace = namespace || window;
 	var MessageQueue = function () {
 		this.queuePool = {};
 		this.queueCallbacks = {};
@@ -54,5 +55,5 @@
 			this.queuePool[queue] = [];
 		}
 	};
-	window[className] = new MessageQueue();
-})('MessageQueue');
+	[namespace][className] = new MessageQueue();
+})('MessageQueue', 'SB');
